@@ -13,7 +13,7 @@ class Register extends Component {
   render() {
     return (
       <div>
-        Register
+        <h1>Register</h1>
         <form onSubmit={this.handleSubmit} onChange={this.handleInput}>
           <input placeholder="username" type="text" id="name" name="username" value={this.state.username} />
           <br />
@@ -23,7 +23,9 @@ class Register extends Component {
           <br />
           <br />
           <Link to="/login">
-            <button>Login</button>
+            <button>
+              <h3>Login</h3>
+            </button>
           </Link>
         </form>
       </div>
@@ -38,7 +40,7 @@ class Register extends Component {
     axios
       .post('http://localhost:5000/api/users', this.state)
       .then(response => {
-        console.log('token', response.data.token);
+        // console.log('token', response.data.token);
         localStorage.setItem('ay! la leche!', response.data.token);
         this.props.history.push('/jokes');
       })

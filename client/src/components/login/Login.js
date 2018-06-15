@@ -13,7 +13,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        Login
+        <h1>Login</h1>
         <form onSubmit={this.handleSubmit} onChange={this.handleInput}>
           <input placeholder="username" type="text" id="name" name="username" value={this.state.username} />
           <br />
@@ -35,8 +35,9 @@ class Login extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state);
     axios
-      .post('http://localhost:5000/api/users', this.state)
+      .post('http://localhost:5000/api/login', this.state)
       .then(response => {
         console.log('response', response);
         const token = response.data.token;
