@@ -21,7 +21,7 @@ class App extends Component {
     );
   }
   componentDidMount() {
-    this.props.history.push('/register');
+    // this.props.history.push('/register');
   }
 }
 
