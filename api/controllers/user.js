@@ -14,7 +14,7 @@ const createUser = (req, res) => {
     })
     .catch(e => {
       console.log('error', e);
-      res.status(400).json(e);
+      res.status(403).json(e);
     });
 };
 
