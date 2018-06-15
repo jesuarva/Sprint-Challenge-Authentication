@@ -21,7 +21,8 @@ class App extends Component {
     );
   }
   componentDidMount() {
-    // this.props.history.push('/register');
+    const credential = localStorage.getItem('ay! la leche!');
+    credential ? this.props.history.push('/jokes') : this.props.history.push('/register');
   }
 }
 

@@ -17,7 +17,7 @@ class Jokes extends Component {
         <ul>
           {this.state.jokes.map(joke => {
             return (
-              <li>
+              <li key={Date.now() + Math.random()}>
                 <h3>{joke.setup}</h3>
                 <h4>{joke.punchline}</h4>
               </li>
@@ -30,15 +30,17 @@ class Jokes extends Component {
 
   componentDidMount() {
     const jwt = localStorage.getItem('ay! la leche!');
-    axios
-      .get('http://localhost:5000/api/jokes', { headers: { authorization: jwt } })
-      .then(response => {
-        console.log('response', response);
-        this.setState({ jokes: response.data });
-      })
-      .catch(e => {
-        console.log('error', e);
-      });
+    jwt
+      ? axios
+          .get('http://localhost:5000/api/jokes', { headers: { authorization: jwt } })
+          .then(response => {
+            console.log('response', response);
+            this.setState({ jokes: response.data });
+          })
+          .catch(e => {
+            console.log('error', e);
+          })
+      : this.props.history.push('/register');
   }
 }
 
